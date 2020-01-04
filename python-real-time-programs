@@ -464,14 +464,167 @@ sum = float(number1) + float(number2)
 print("The sum of {0} and {1} is {2}" .format(number1, number2, sum)) 
 
 =====================================================================================================
+28. Python to demonstrate math.factorial() 
+import math 
+
+print ("The factorial of 23 is : ", end="") 
+print (math.factorial(23)) 
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ OR $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+# This Python Program finds the factorial of a number
+
+def factorial(num):
+    """This is a recursive function that calls
+   itself to find the factorial of given number"""
+    if num == 1:
+        return num
+    else:
+        return num * factorial(num - 1)
 
 
+# We will find the factorial of this number
+num = int(input("Enter a Number: "))
+
+# if input number is negative then return an error message
+# elif the input number is 0 then display 1 as output
+# else calculate the factorial by calling the user defined function
+if num < 0:
+    print("Factorial cannot be found for negative numbers")
+elif num == 0:
+    print("Factorial of 0 is 1")
+else:
+    print("Factorial of", num, "is: ", factorial(num))
+======================================================================================================
+29. Calculate the  program to find simple interest 
+# for given principal amount, time and 
+# rate of interest. 
+
+# We can change values here for 
+# different inputs 
+P = 1
+R = 1
+T = 1
+
+# Calculates simple interest 
+SI = (P * R * T) / 100
+
+# Print the resultant value of SI 
+print("simple interest is", SI) 
+
+# This code is contributed by Azkia Anam. 
+
+==================================================================================================
+30. Calculate the program to find compound 
+# interest for given values. 
+
+def compound_interest(principle, rate, time): 
+
+	# Calculates compound interest 
+	CI = principle * (pow((1 + rate / 100), time)) 
+	print("Compound interest is", CI) 
+
+# Driver Code 
+compound_interest(10000, 10.25, 5) 
+
+# This code is contributed by Abhishek Agrawal. 
+
+=================================================================================================
+31.# Python program to determine whether the number is 
+# Armstrong number or not 
+
+# Function to calculate x raised to the power y 
+def power(x, y): 
+	if y==0: 
+		return 1
+	if y%2==0: 
+		return power(x, y/2)*power(x, y/2) 
+	return x*power(x, y/2)*power(x, y/2) 
+
+# Function to calculate order of the number 
+def order(x): 
+
+	# variable to store of the number 
+	n = 0
+	while (x!=0): 
+		n = n+1
+		x = x/10
+	return n 
+
+# Function to check whether the given number is 
+# Armstrong number or not 
+def isArmstrong (x): 
+	n = order(x) 
+	temp = x 
+	sum1 = 0
+	while (temp!=0): 
+		r = temp%10
+		sum1 = sum1 + power(r, n) 
+		temp = temp/10
+
+	# If condition satisfies 
+	return (sum1 == x) 
 
 
+# Driver Program 
+x = 153
+print(isArmstrong(x)) 
+x = 1253
+print(isArmstrong(x)) 
 
+============================================================================================
+32.# Python program to find Area of a circle 
 
+def findArea(r): 
+	PI = 3.142
+	return PI * (r*r); 
 
+# Driver method 
+print("Area is %.6f" % findArea(5)); 
 
+# This code is contributed by Chinmoy Lenka 
+==================================================================================================
+33.# Python program to print all 
+# prime number in an interval 
+
+start = 11
+end = 25
+
+for val in range(start, end + 1): 
+	
+# If num is divisible by any number 
+# between 2 and val, it is not prime 
+if val > 1: 
+	for n in range(2, val): 
+		if (val % n) == 0: 
+			break
+	else: 
+		print(val) 
+============================================================================================
+
+34.# Python program to check if 
+# given number is prime or not 
+
+num = 11
+
+# If given number is greater than 1 
+if num > 1: 
+	
+# Iterate from 2 to n / 2 
+for i in range(2, num//2): 
+		
+	# If num is divisible by any number between 
+	# 2 and n / 2, it is not prime 
+	if (num % i) == 0: 
+		print(num, "is not a prime number") 
+		break
+else: 
+	print(num, "is a prime number") 
+
+else: 
+print(num, "is not a prime number") 
+===============================================================
+35.
 
 
 
