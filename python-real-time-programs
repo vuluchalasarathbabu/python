@@ -1,0 +1,436 @@
+1.Remove Duplicates Function:(removing duplicates from lists, is a low-key-yet-totally-on-point Python)
+
+def remove_duplicates(lista):
+    lista2 = []
+    if lista: 
+        for item in lista:
+            if item not in lista2: #is item in lista2 already?
+                lista2.append(item)
+    else:
+        return lista
+    return lista2
+print remove_duplicates([1,2,3,3])
+
+ANS: [1, 2, 3]
+
+==============================================================================================================
+2.2. Magic 8 Ball
+Am I dating myself by saying I loved Magic 8 Balls as a kid? Well, if you no longer have yours (maybe because, like me, you smashed it to see what that murky liquid was inside),
+you can recreate the 8 Ball logic with 
+
+https://www.pythonforbeginners.com/code/magic-8-ball-written-in-python
+
+=============================================================================================================
+3. Pig Latin Translator:
+
+#Take the users input
+words = raw_input("Enter some text to translate to pig latin: ")
+print "You entered: ", words
+
+#Now I need to break apart the words into a list
+words = words.split(' ')
+
+#Now words is a list, so I can manipulate each one usinga loop
+
+for i in words:
+    if len(i) >= 3: #I only want to translate words greater than 3 characters
+        i = i + "%say" % (i[0]) 
+        i = i[1:]
+        print i
+    else:
+        pass
+
+=============================================================================================================
+4. Use Python to Send Email.
+
+Business emails rely on automation. When a user signs up for a product on your site, for instance, you want them to receive a confirmation email…but you DON’T want to be scheduling and sending each of those emails by hand.
+Developers use scripting languages like Python to make that automation happen.
+
+https://www.pythonforbeginners.com/code-snippets-source-code/using-python-to-send-email
+
+============================================================================================================
+5.Temperature Conversion Program
+
+Is there anything more embarrassing than someone in Europe telling you it’s 32 degrees out, and not knowing that’s hot not cold? Well, there probably is, but still. Thankfully, we live in the internet age, 
+where web applications let us convert these kind of numbers at the touch of a button!
+
+#!/usr/bin/env python
+Celsius = int(raw_input("Enter a temperature in Celsius: "))
+ 
+Fahrenheit = 9.0/5.0 * Celsius + 32
+ 
+print "Temperature:", Celsius, "Celsius = ", Fahrenheit, " F"
+
+==============================================================================================================
+6. Convert KM/H to MPH converter
+converting kilometers per hour to miles per hour.
+
+https://www.pythonforbeginners.com/code-snippets-source-code/python-code-convert-kmh-to-mph/
+
+==============================================================================================================
+
+7. Greatest Common Divisor Script
+
+def greatest_common_divisor(x,y):
+    print "For", x, "and", y,","  
+    r=x%y
+    while r>0:
+        r=x%y
+        if r ==0: 
+            print "the greatest common divisor is", y,"."
+        else:
+            q=y
+            x=q
+            y=r
+
+greatest_common_divisor(1071,1029)
+greatest_common_divisor(5538,1105)
+greatest_common_divisor(8764,7732)        
+
+==================================================================================================
+8. Search a Computer For Specific Files
+
+https://www.pythonforbeginners.com/systems-programming/os-walk-and-fnmatch-in-python/
+
+==================================================================================================
+9. Check Your External IP Address
+
+Needing to know what your external IP address is one of those things that doesn’t come up
+everyday…until it does.
+
+https://www.pythonforbeginners.com/code-snippets-source-code/check-your-external-ip-address/
+
+=================================================================================================
+
+10. Random Password Generator
+
+import random
+
+LOWERCASE_CHARS = tuple(map(chr, xrange(ord('a'), ord('z')+1)))
+UPPERCASE_CHARS = tuple(map(chr, xrange(ord('A'), ord('Z')+1)))
+DIGITS = tuple(map(str, range(0, 10)))
+SPECIALS = ('!', '@', '#', '$', '%', '^', '&', '*')
+
+SEQUENCE = (LOWERCASE_CHARS,
+            UPPERCASE_CHARS,
+            DIGITS,
+            SPECIALS,
+            )
+
+def generate_random_password(total, sequences):
+    r = _generate_random_number_for_each_sequence(total, len(sequences))
+
+    password = []
+    for (population, k) in zip(sequences, r):
+        n = 0
+        while n < k:
+            position = random.randint(0, len(population)-1)
+            password += population[position]
+            n += 1
+    random.shuffle(password)
+    
+    while _is_repeating(password):
+        random.shuffle(password)
+        
+    return ''.join(password)
+
+def _generate_random_number_for_each_sequence(total, sequence_number):
+    """ Generate random sequence with numbers (greater than 0).
+        The number of items equals to 'sequence_number' and
+        the total number of items equals to 'total'
+    """
+    current_total = 0
+    r = []
+    for n in range(sequence_number-1, 0, -1):
+        current = random.randint(1, total - current_total - n)
+        current_total += current
+        r.append(current)
+    r.append(total - sum(r))
+    random.shuffle(r)
+
+    return r
+
+def _is_repeating(password):
+    """ Check if there is any 2 characters repeating consecutively """
+    n = 1
+    while n < len(password):
+        if password[n] == password[n-1]:
+            return True
+        n += 1
+    return False
+
+if __name__ == '__main__':
+    print generate_random_password(random.randint(6, 30), SEQUENCE)
+
+===========================================================================================
+
+11. Username Prompt
+
+https://www.pythonforbeginners.com/code-snippets-source-code/script-get-the-username-from-a-prompt/
+
+================================================================================================
+
+12. Grocery Calculator
+
+'''This will be a Python script that functions as a grocery calculator. It will take in key-value pairs for items
+and their prices, and return the subtotal and total, and can print out the list for you for when you're ready to
+take it to the store!'''
+
+'''Algorithm:
+1. User enters key-value pairs that are added into a dict.
+2. Users tells script to return total, subtotal, and key-value pairs in a nicely formatted list.'''
+
+#Object = GroceryList
+#Methods = addToList, Total, Subtotal, returnList
+
+class GroceryList(dict):
+
+    def __init__(self):
+    	self = {}
+
+    def addToList(self, item, price):
+            self.update({item:price})
+
+    def Total(self):
+		total = 0
+		for items in self:
+			total += (self[items])*.07 + (self[items])
+		return total
+
+    def Subtotal(self):
+		subtotal = 0
+		for items in self:
+			subtotal += self[items]
+		return subtotal
+
+    def returnList(self):
+		return self
+
+'''Test list should return:
+Total = 10.70
+Subtotal = 10
+returnList = {"milk":4, "eggs":3, "kombucha":3}
+'''
+List1 = GroceryList()
+
+List1.addToList("milk",4)
+List1.addToList("eggs", 3)
+List1.addToList("kombucha", 3)
+
+
+print List1.Total()
+print List1.Subtotal()
+print List1.returnList()
+
+#*****************************************************
+print
+#*****************************************************
+
+
+List2 = GroceryList()
+
+List2.addToList('cheese', 7.49)
+List2.addToList('wine', 25.36)
+List2.addToList('steak', 17.64)
+
+print List2.Total()
+print List2.Subtotal()
+print List2.returnList()
+
+
+==============================================================================================
+13. Tweet Search
+
+https://www.pythonforbeginners.com/python-on-the-web/twitter-search-using-python/
+
+=============================================================================================
+
+14. Convert to Seconds
+
+def convert_to_minutes(num_hours):
+    '''(int) -> int
+    Return the number of minutes there are in
+    num_hours hours.
+    '''
+    minutes = num_hours * 60
+    return minutes
+
+def convert_to_seconds(num_hours):
+    '''(int) -> int
+    Return the number of seconds there are in 
+    num_hours hours.
+    '''
+    minutes = convert_to_minutes(num_hours)
+    seconds = minutes * 60
+    return seconds
+
+seconds = convert_to_seconds(1.5)
+print seconds
+    
+=======================================================================================
+15. Dice Roller
+
+https://www.pythonforbeginners.com/code-snippets-source-code/game-rolling-the-dice/
+
+==========================================================================================
+16. Vowel Remover Function
+
+def vowel_remover(text):
+    string = ""
+    for l in text:
+        if l.lower() != "a" and l.lower() != "e" and l.lower() != "i" and l.lower() != "o" and l.lower() != "u":
+            string += l
+    return string
+print vowel_remover("hello world!")
+
+========================================================================================
+
+17. Hypnosis Generator
+
+import random
+
+def getlength(script):
+	return sum((i['length'] for i in script))
+
+def truncate(target_length, script):
+	if getlength(script) > target_length:
+		script = sorted(script, key=lambda k: (k['priority'], -k['length']))[:-1]
+		return truncate(target_length, script)
+	return sorted(script, key=lambda k: k['index'])
+
+def as_text(script):
+	return "\n".join([i['text'] for i in script])
+
+
+priorities_and_sentences = [
+(1, "...now... sitting comfortably in the chair"),
+(2, "...with your feet still flat on the ground"),
+(3, "...back straight and head up right"),
+(2, "...make these adjustments now if you need to"),
+(3, "... pause.............................."),
+(1, "...your eyes ...still ...comfortably closed"),
+(2, "...nice and relaxed...comfortable and relaxed..."),
+(3, "... pause......................................."),
+(1, "...now...I want you to notice...how heavy your head is starting to feel..."),
+(1, "how heavy your head feels..."),
+(3, "... pause......................................."),
+(2, "really noticing the weight... of your head..."),
+(3, "and how much more ...comfortable...it will feel when you let your neck relaxes ...and your head begins to fall forward ...into a much more comfortable"),
+]
+
+scriptlist = [{'priority': j[0], 'text': j[1], 'length': len(j[1]), 'index': i } for i, j in enumerate(priorities_and_sentences)]
+
+print "500 characters"
+print as_text(truncate(500, scriptlist))
+print "\n300 characters"
+print as_text(truncate(300, scriptlist))
+print "\n200 characters"
+print as_text(truncate(200, scriptlist))
+
+===============================================================================================
+
+18. Guessing Game
+
+https://www.pythonforbeginners.com/code-snippets-source-code/python-guessing-game/
+
+==============================================================================================
+
+19. Fizz Buzz Solution
+
+"""
+Write a program that prints the numbers from 1 to 100. 
+But for multiples of three print "Fizz" instead of the number 
+and for the multiples of five print "Buzz". 
+For numbers which are multiples of both three and five print "FizzBuzz".
+"""
+output3 = ["Fizz", "", ""]
+output5 = ["Buzz", "", "", "", ""]
+
+for x in range(1, 101):
+    print "%s%s" % (output3[x % 3], output5[x % 5]) or x
+print my_date.strftime('%d %A %a')
+
+================================================================================================
+20. Color Gradients and Intermediaries
+
+def arrayMultiply(array, c):
+    return [element*c for element in array]
+
+def arraySum(a, b):
+    return map(sum, zip(a,b))
+
+def intermediate(a, b, ratio):
+    aComponent = arrayMultiply(a, ratio)
+    bComponent = arrayMultiply(b, 1-ratio)
+    return arraySum(aComponent, bComponent)
+
+def gradient(a, b, steps):
+    steps = [n/float(steps) for n in range(steps)]
+    for step in steps:
+        print intermediate(a, b, step)
+
+#print arrayMultiply((1,2,3), 0.3)
+#print arraySum((1,2,3), (0.5, 0.5, 0.5))
+#print intermediate((1,2,3), (3,2,1), 0.5)
+#print gradient(None, None, 5)
+
+
+pureBlue = (8, 123, 157)
+pureYellowGreen = (0,84,166)
+
+gradient(pureBlue, pureYellowGreen, 6)
+
+
+======================================================================================================
+
+21. Get All Website Links Function
+
+
+Ever been tasked with finding all the links on a specific website and started seeing double as you pored 
+over the screen making sure you weren’t missing any?
+
+https://www.pythonforbeginners.com/code-snippets-source-code/regular-expression-re-findall/
+
+=====================================================================================================
+
+22. Average Score Calculator
+
+https://www.pythonforbeginners.com/code-snippets-source-code/script-average-score/
+
+=====================================================================================================
+
+23. Hangman Game
+
+https://www.pythonforbeginners.com/code-snippets-source-code/game-hangman/
+
+===================================================================================================
+
+24. Number Reverser
+
+n=int(input("Enter number: "))
+rev=0
+while(n>0):
+    dig=n%10
+    rev=rev*10+dig
+    n=n//10
+print("Reverse of the number:",rev)
+
+===================================================================================================
+
+25. Print Odd Numbers in a Given Range
+
+lower=int(input("Enter the lower limit for the range:"))
+upper=int(input("Enter the upper limit for the range:"))
+for i in range(lower,upper+1):
+    if(i%2!=0):
+        print(i)
+
+
+====================================================================================================
+26. Print All Integers That Aren’t Divisible by Either 2 or 3 and Lie between 1 and 50
+
+for i in range(0,51):
+    if(i%2!=0&i%3!=0):
+        print(i)
+
+====================================================================================================
