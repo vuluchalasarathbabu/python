@@ -13,6 +13,19 @@ filepath = directory + input("Enter filename:")
 # To create a file
 pathlib.Path(filepath).touch()
 
-
 =========================================================
 
+2. covid vaccination program for b/w take the input form 18 to 45 age otherwise won't allow for the vaccination
+
+def covid(num):
+    if num >= 18 and num <= 45:
+        return "you are allowd forvaccination"
+    else:
+        return "you are not allowd for vaccination"
+#x=input(int("entet the num:")
+
+number = int(input("Enter second number: "))
+
+print(covid(number))
+
+============================================================
