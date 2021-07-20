@@ -1,0 +1,18 @@
+=============================================
+1.How to save file with file name from user using Python?
+
+# import pathlib module
+import pathlib
+
+# path of this script
+directory = "D:\gfg\\"
+
+# get fileName from user
+filepath = directory + input("Enter filename:")
+
+# To create a file
+pathlib.Path(filepath).touch()
+
+
+=========================================================
+
