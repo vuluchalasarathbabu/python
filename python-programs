@@ -30,6 +30,23 @@ pathlib.Path(src).rename(target)
 
 
 =================================================================
+3.copies source file to a new destination file
+
+# import shutil module
+import shutil
+
+# get source file name
+src = input("Enter src filename:")
+
+# get destination file name
+dest = input("Enter target filename:")
+
+# copies source file to a new destination file
+shutil.copyfile(src, dest)
+
+==============================================================
+
+
 
 2. covid vaccination program for b/w take the input form 18 to 45 age otherwise won't allow for the vaccination
 
