@@ -14,6 +14,22 @@ filepath = directory + input("Enter filename:")
 pathlib.Path(filepath).touch()
 
 =========================================================
+2. rename source file name with target file name
+
+# import pathlib module
+import pathlib
+
+# get source file name
+src = input("Enter src filename:")
+
+# get destination file name
+target = input("Enter target filename:")
+
+# rename source file name with target file name
+pathlib.Path(src).rename(target)
+
+
+=================================================================
 
 2. covid vaccination program for b/w take the input form 18 to 45 age otherwise won't allow for the vaccination
 
